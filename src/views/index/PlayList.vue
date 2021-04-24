@@ -12,11 +12,11 @@
           <p class="count">播放量：{{playUnit(playList.playCount)}}</p>
           <p class="count">收藏量：{{playUnit(playList.subscribedCount)}}</p>
           <p class="count">歌曲数量：{{playList.trackCount}}</p>
-          <a class="play" href=""><i></i>播放</a>
+          <a class="play" @click="play()"><i></i>播放</a>
         </div>
       </div>
       <div class="main-box">
-        <PlayListForm :listData="playList.tracks" style="width:880px"></PlayListForm>
+        <PlayListForm ref="listForm" :listData="playList.tracks" style="width:880px"></PlayListForm>
         <div class="description">
           <h3>简介</h3>
           <p>{{playList.description}}</p>
@@ -53,6 +53,9 @@ export default {
       }).then((res) => {
         this.playList = res.data.playlist;
       })
+    },
+    play() {
+      this.$refs.listForm.songClick(this.$refs.listForm.listData[0]);
     }
   }
 }

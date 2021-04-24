@@ -9,8 +9,8 @@
     <ul class="list-body">
       <li class="list-item" v-for="(item, index) in listData" :key="index">
         <div class="number">{{index + 1}}</div>
-        <div class="name"><a href="">{{item.name}}</a></div>
-        <div class="artist"><a href="">{{item.ar[0].name}}</a></div>
+        <div class="name"><a @click="songClick(item)">{{item.name}}</a></div>
+        <div class="artist"><a @click="artistClick(item.ar[0].id)">{{item.ar[0].name}}</a></div>
         <div class="time">{{ item.dt | songTime}}</div>
       </li>
     </ul>
@@ -29,6 +29,25 @@ export default {
     listData: {
       type: Array,
       default: () => []
+    }
+  },
+  methods: {
+    songClick(item) {
+      let song = {
+        pic: item.al.picUrl,
+        id: item.id,
+        artist: item.ar[0].name,
+        name: item.name
+      }
+      this.$bus.$emit('play', song)
+    },
+    artistClick(id) {
+      this.$router.push({
+        path: '/artist-router/artist-detail',
+        query: {
+          id
+        }
+      })
     }
   }
 }

@@ -6,10 +6,10 @@
           <el-carousel-item v-for="(item, index) in djList" :key="index">
               <ul class="carousel-item">
                 <li v-for="(item1, index) in item" :key="index" class="play-list-item">
-                  <div class="img-wrapper">
+                  <div class="img-wrapper" @click="songClick(item1.song)">
                     <img :src="item1.picUrl" alt="">
                   </div>
-                  <p>{{item1.name}}</p>
+                  <p @click="songClick(item1.song)">{{item1.name}}</p>
                   <p>歌手：{{item1.song.artists[0].name}}</p>
                 </li>
               </ul>
@@ -46,6 +46,15 @@ export default {
           this.djList.push(arr);
         }
       })
+    },
+    songClick(item) {
+      let song = {
+        pic: item.album.picUrl,
+        id: item.id,
+        artist: item.artists[0].name,
+        name: item.name
+      }
+      this.$bus.$emit('play', song)
     }
   }
 }

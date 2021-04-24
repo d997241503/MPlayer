@@ -20,12 +20,12 @@
               <span class="number">{{artistInfo.mvSize}}</span>
             </li>
           </ul>
-          <a class="play" href=""><i></i>播放</a>
+          <a class="play" @click="play()"><i></i>播放</a>
         </div>
       </div>
       <div class="main-box">
         <h3 class="title">热门歌曲</h3>
-        <PlayListForm :listData="hotSongs"></PlayListForm>
+        <PlayListForm ref="listForm" :listData="hotSongs"></PlayListForm>
       </div>
     </div>
   </div>
@@ -60,6 +60,9 @@ export default {
         this.artistInfo = res.data.artist;
         this.hotSongs = res.data.hotSongs;
       })
+    },
+    play() {
+      this.$refs.listForm.songClick(this.$refs.listForm.listData[0]);
     }
   }
 }

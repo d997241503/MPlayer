@@ -4,17 +4,20 @@
     <keep-alive>
       <router-view/>
     </keep-alive>
+    <Audio/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
+import Audio from '@/components/Audio.vue'
 
 export default {
   name: 'Home',
   components: {
-    Header
+    Header,
+    Audio
   },
   watch: {
     '$route': function(val, oVal) {
@@ -37,6 +40,6 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  padding-bottom: 100px;
+  padding-bottom: 125px;
 }
 </style>
