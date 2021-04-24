@@ -1,0 +1,19 @@
+.m-layout {
+  width: 1200px;
+  margin: 0 auto;
+}
+.el-carousel__arrow {
+  font-size: 30px;
+  border-radius: 0%;
+  width: 30px;
+  height: 60px;
+  margin-top: -45px;
+  background-color: rgba(31,45,61,.21);;
+}
+.el-carousel__arrow:hover {
+  background-color: rgba(31,45,61,.41);;
+}
+.el-carousel__button {
+  height: 5px;
+  background-color: rgba(0,0,0,.2);
+}
